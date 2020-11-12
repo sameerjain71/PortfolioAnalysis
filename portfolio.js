@@ -11,7 +11,7 @@ module.exports = class portfolio
     {
         let json = lib.readJsonFromFile(file) ;
 
-        console.log(json.length);
+//        console.log(json.length);
 
         for(let i=0;i<json.length;i++)
         {
@@ -28,7 +28,6 @@ module.exports = class portfolio
     convertToJSonString()
     {
         let tempArray = [];
-        console.log(this.assets.length) ;
 
         for (let i=0;i<this.assets.length;i++)
         {

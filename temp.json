@@ -1,1 +1,12 @@
-[{"assettype":"equity","symbol":"MSFT","price":207.6,"size":225,"tradedate":"9/1/2020","currency":"USD"},{"assettype":"equity","symbol":"IBM","price":20.6,"size":222,"tradedate":"9/1/2020","currency":"USD"},{"assettype":"equity","symbol":"PTON","price":86,"size":2220,"tradedate":"9/1/2020","currency":"USD"}]
+[
+    
+ {"symbol":"IBM","price":207.6,"time":"9/1/2017"},
+ {"symbol":"IBM","price":202.6,"time":"9/1/2015"},
+ {"symbol":"IBM","price":204.6,"time":"9/1/2016"},
+ {"symbol":"IBM","price":205.6,"time":"9/1/2014"},
+ {"symbol":"MSFT","price":207.6,"time":"9/1/2017"},
+ {"symbol":"MSFT","price":110.6,"time":"9/1/2011"},
+ {"symbol":"MSFT","price":123.6,"time":"9/1/2013"},
+ {"symbol":"MSFT","price":132.6,"time":"9/1/2012"}
+
+]

@@ -29,4 +29,21 @@ return jsonObj ;
     
     
 }
-module.exports = {readJsonFromFile, writeJsonToFile}
+
+function compare(a, b) 
+    {
+      let timeA = a.get("time") ;
+    let dateA = new Date(timeA) ;
+      let timeB = b.get("time") ;
+    let dateB = new Date(timeB) ;
+
+      let comparison = 0 ;
+      if (dateA .getTime()> dateB.getTime()) {
+        comparison = 1;
+      } else if (dateA .getTime() < dateB.getTime()) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+
+module.exports = {readJsonFromFile, writeJsonToFile, compare}
