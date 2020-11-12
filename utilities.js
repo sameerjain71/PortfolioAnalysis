@@ -30,20 +30,20 @@ return jsonObj ;
     
 }
 
-function compare(a, b) 
-    {
-      let timeA = a.get("time") ;
-    let dateA = new Date(timeA) ;
-      let timeB = b.get("time") ;
-    let dateB = new Date(timeB) ;
+//function comparePriceObjs(a, b) 
+//    {
+//      let timeA = a.get("time") ;
+//    let dateA = new Date(timeA) ;
+//      let timeB = b.get("time") ;
+//    let dateB = new Date(timeB) ;
+//
+//      let comparison = 0 ;
+//      if (dateA .getTime()> dateB.getTime()) {
+//        comparison = 1;
+//      } else if (dateA .getTime() < dateB.getTime()) {
+//        comparison = -1;
+//      }
+//      return comparison;
+//    }
 
-      let comparison = 0 ;
-      if (dateA .getTime()> dateB.getTime()) {
-        comparison = 1;
-      } else if (dateA .getTime() < dateB.getTime()) {
-        comparison = -1;
-      }
-      return comparison;
-    }
-
-module.exports = {readJsonFromFile, writeJsonToFile, compare}
+module.exports = {readJsonFromFile, writeJsonToFile}

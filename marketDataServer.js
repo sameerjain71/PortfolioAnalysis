@@ -3,6 +3,8 @@ const lib = require('./utilities.js') ;
 
 module.exports = class marketDataServer
 {
+    // prices is a map where key is symbol and value is an array
+    // each array stores priceObj and is sorted by the field "time" in priceObj
     
     prices;
 
@@ -12,7 +14,7 @@ module.exports = class marketDataServer
         
         let json = lib.readJsonFromFile(file) ;
 
-        console.log(json.length);
+//        console.log(json.length);
 
         for(let i=0;i<json.length;i++)
         {
@@ -40,10 +42,11 @@ module.exports = class marketDataServer
         }
    }
     
-    insertPriceObj(arr, priceObj)
+insertPriceObj(arr, priceObj)
     {
         arr.push(priceObj) ;
-        arr.sort(lib.compare) ;        
+//        arr.sort(lib.comparePriceObjs) ;        
+        arr.sort(comparePriceObjForDates) ;        
     }
     
     
@@ -65,3 +68,18 @@ module.exports = class marketDataServer
         return JSON.stringify(tempArray) ;
     }
 }
+function comparePriceObjForDates(a, b) 
+    {
+        let timeA = a.get("time") ;
+        let dateA = new Date(timeA) ;
+        let timeB = b.get("time") ;
+        let dateB = new Date(timeB) ;
+
+        let comparison = 0 ;
+        if (dateA .getTime()> dateB.getTime()) {
+        comparison = 1;
+        } else if (dateA .getTime() < dateB.getTime()) {
+        comparison = -1;
+        }
+        return comparison;
+    }
