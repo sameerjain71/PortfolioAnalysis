@@ -1,30 +1,19 @@
-
-
-module.exports = class baseObject
+module.exports = class valuationObject
 {
     
     myMap;
 
-    constructor(jsonObj)
+    constructor(position, valuationContext)
     {
         this.myMap = new Map() ;
-        for(let key in jsonObj)
-        {
-            let value = jsonObj[key] ;
-            this.myMap.set(key, value) ;
-            
-        }
-    }
-
-    
-    convertToObject()
-    {
         
-    const obj = Object.fromEntries(this.myMap);
-    return obj ;
+        position.populateFieldsIntoMap(this.myMap) ;
+
+        valuationContext.populateFieldsIntoMap(this.myMap) ;
+
 
     }
-               
+        
     addItem(key, value)
     {
         if (this.myMap.has(key))
@@ -54,14 +43,5 @@ module.exports = class baseObject
         return v ;
      }
     
-    populateFieldsIntoMap(map)
-    {
-    for (let key of this.myMap.keys())
-        {
-            let value = this.myMap.get(key) ;
-            map.set(key, value) ;
-        
-        }
-    }
-
 }
+

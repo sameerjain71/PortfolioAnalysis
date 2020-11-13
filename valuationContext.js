@@ -1,6 +1,4 @@
-
-
-module.exports = class baseObject
+module.exports = class valuationContext
 {
     
     myMap;
@@ -15,16 +13,7 @@ module.exports = class baseObject
             
         }
     }
-
     
-    convertToObject()
-    {
-        
-    const obj = Object.fromEntries(this.myMap);
-    return obj ;
-
-    }
-               
     addItem(key, value)
     {
         if (this.myMap.has(key))
@@ -53,7 +42,9 @@ module.exports = class baseObject
         }
         return v ;
      }
-    
+
+
+
     populateFieldsIntoMap(map)
     {
     for (let key of this.myMap.keys())
@@ -63,5 +54,4 @@ module.exports = class baseObject
         
         }
     }
-
 }

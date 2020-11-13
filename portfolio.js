@@ -11,12 +11,10 @@ module.exports = class portfolio
     {
         let json = lib.readJsonFromFile(file) ;
 
-//        console.log(json.length);
 
         for(let i=0;i<json.length;i++)
         {
             let ajson = json[i] ;
-            console.log(ajson) ;
             let obj = new baseObject(ajson) ;
             this.assets.push(obj) ;
 
@@ -24,6 +22,10 @@ module.exports = class portfolio
 
     }
 
+    toArray()
+    {
+        return this.assets ;
+    }
 
     convertToJSonString()
     {
@@ -35,6 +37,16 @@ module.exports = class portfolio
             tempArray.push(anObj.convertToObject()) ;
         }
         return JSON.stringify(tempArray) ;
+    }
+
+    length()
+    {
+        return this.assets.length ;
+    }
+
+    getPositionAtIndex(i)
+    {
+        return this.assets[i] ;
     }
 
     

@@ -30,20 +30,26 @@ return jsonObj ;
     
 }
 
-//function comparePriceObjs(a, b) 
-//    {
-//      let timeA = a.get("time") ;
-//    let dateA = new Date(timeA) ;
-//      let timeB = b.get("time") ;
-//    let dateB = new Date(timeB) ;
-//
-//      let comparison = 0 ;
-//      if (dateA .getTime()> dateB.getTime()) {
-//        comparison = 1;
-//      } else if (dateA .getTime() < dateB.getTime()) {
-//        comparison = -1;
-//      }
-//      return comparison;
-//    }
+function convertJsonToArray(json)
+{
+    let arr = [] ;
+    
+    for(let i=0;i<json.length;i++)
+    {
+        let ajson = json[i] ;
+        let obj = new Map() ;
+        
+        for(let key in ajson)
+        {
+            let value = ajson[key] ;
+            obj.set(key, value) ;
+            arr.push(obj) ;
+        }
+    
 
-module.exports = {readJsonFromFile, writeJsonToFile}
+    }
+    
+    return arr ;
+}
+
+module.exports = {readJsonFromFile, writeJsonToFile, convertJsonToArray}

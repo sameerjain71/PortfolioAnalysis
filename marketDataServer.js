@@ -19,7 +19,7 @@ module.exports = class marketDataServer
         for(let i=0;i<json.length;i++)
         {
             let ajson = json[i] ;
-            console.log(ajson) ;
+//            console.log(ajson) ;
             let obj = new priceObj(ajson) ;
             this.addItem(obj.get('symbol'), obj) ;
 
