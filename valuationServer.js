@@ -7,7 +7,7 @@ const lib = require('./utilities.js') ;
 module.exports = class valuationServer
 {
 
-    static valuePortfolio(p, valuationContext)
+    static valuePortfolio(p, valuationContext, marketDataServer)
     {
         let results = [] ;
         
@@ -26,7 +26,7 @@ module.exports = class valuationServer
                     
                 case "equity":
                 {
-                    equityValuationService.value(vObj, valuationContext) ;
+                    equityValuationService.value(vObj, valuationContext, marketDataServer) ;
                     break ;
                 }
                 default:
@@ -41,7 +41,7 @@ module.exports = class valuationServer
         
     }
     
-    static valuePortfolioForStates(p, jsonValStates)
+    static valuePortfolioForStates(p, jsonValStates, marketDataServer)
     {
         let resultsArr = [] ;
         
@@ -59,7 +59,7 @@ module.exports = class valuationServer
         
         for(let i=0;i<vContextArr.length;i++)
         {
-           let pResultsArr = valuationServer.valuePortfolio(p, vContextArr[i]) ;
+           let pResultsArr = valuationServer.valuePortfolio(p, vContextArr[i], marketDataServer) ;
         
             resultsArr.push(pResultsArr) ;
         }

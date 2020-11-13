@@ -42,6 +42,16 @@ module.exports = class marketDataServer
         }
    }
     
+    getPriceArray(key)
+    {
+        let arr = [] ;
+         if (this.prices.has(key))
+        {
+            arr = this.prices.get(key);
+        }
+        return arr ;
+    }
+    
 insertPriceObj(arr, priceObj)
     {
         arr.push(priceObj) ;
@@ -67,6 +77,25 @@ insertPriceObj(arr, priceObj)
         }
         return JSON.stringify(tempArray) ;
     }
+    
+priceFor(vObj)
+{
+    let price = -1;
+    
+    let date = vObj.getItem("valuation_time") ;
+    
+    let symbol = vObj.getItem("symbol") ;
+       
+    let priceArray = this.getPriceArray(symbol) ;
+    
+    let priceObj = getPriceObjForDate(priceArray, date) ;
+    
+    if (priceObj !== undefined)
+        price = priceObj.get("price") ;
+    
+    return price ;
+}
+    
 }
 function comparePriceObjForDates(a, b) 
     {
@@ -83,3 +112,33 @@ function comparePriceObjForDates(a, b)
         }
         return comparison;
     }
+
+function getPriceObjForDate(priceArray, date)
+{
+    
+        let theDate = new Date(date) ;
+        let found = false ;
+        let priceObj ;
+        let length = priceArray.length ;
+        let i = 0 ;
+    
+        while ((found === false) && i<length)
+        {
+            let anObj = priceArray[i] ;
+            let priceObjDate = new Date(anObj.get("time")) ;
+            if (priceObjDate.getTime()<= theDate.getTime())
+            {
+                priceObj = anObj ;
+                i++ ;
+                found = false ;
+            }
+            else
+            {
+                found = true ;
+            }
+            
+        }
+    
+    return priceObj ;
+    
+}

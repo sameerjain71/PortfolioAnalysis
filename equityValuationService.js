@@ -3,11 +3,17 @@ const lib = require('./utilities.js') ;
 module.exports = class equityValuationService
 {
 
-    static value(vObj, vContext)
+    static value(vObj, vContext, marketDataServer)
     {
-        let price = 1.3 ;
+        let price = marketDataServer.priceFor(vObj) ;
+        let tv = -99999 ;
+        
+        vObj.addItem("price", price) ;
+        
         let position = vObj.getItem('size')  ;
-        let tv = position * price ;
+        
+        if (price >0)
+            tv = position * price ;
         
         vObj.addItem("tv", tv) ;
         

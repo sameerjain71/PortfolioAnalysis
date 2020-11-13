@@ -26,7 +26,7 @@ let jsonValuationStates = lib.readJsonFromFile("./valuationStates.json") ;
 //
 //console.log(jsonValuationStates) ;
 //
-let results = valuationServer.valuePortfolioForStates(p, jsonValuationStates) ;
+let results = valuationServer.valuePortfolioForStates(p, jsonValuationStates, m) ;
 //
 console.log("------valuation------") ;
 
