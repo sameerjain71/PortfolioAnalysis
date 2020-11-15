@@ -10,15 +10,7 @@ module.exports = class baseObject
         this.myMap = jsonObj ;
     }
 
-    
-//    convertToObject()
-//    {
-//        
-//    const obj = Object.fromEntries(this.myMap);
-//    return obj ;
-//
-//    }
-               
+                   
     addItem(key, value)
     {
         if (this.myMap.hasOwnProperty(key))
@@ -42,11 +34,9 @@ module.exports = class baseObject
     addFieldsInto(target)
     {
         // iterate over fields and add to target
-//    console.log(this.myMap) ;
 
     for (let key in this.myMap)
         {
-//            console.log(key) ;
             let value = this.myMap[key] ;
             target.addItem(key, value);
         

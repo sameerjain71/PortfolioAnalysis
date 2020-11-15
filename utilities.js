@@ -23,7 +23,6 @@ function readJsonFromFile(file)
 
 let rawdata = fs.readFileSync(file);
 let jsonObj = JSON.parse(rawdata);
-//console.log(jsonObj);
 
 return jsonObj ;
     
@@ -49,7 +48,7 @@ function convertJsonToArray(json)
 
     }
     
-    return arr ;
+    
 }
 
 module.exports = {readJsonFromFile, writeJsonToFile, convertJsonToArray}
