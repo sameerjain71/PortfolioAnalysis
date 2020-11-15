@@ -1,5 +1,5 @@
 const lib = require('./utilities.js') ;
-const baseObject = require('./baseObject.js') ;
+const asset = require('./asset.js') ;
 
 module.exports = class portfolio
 {
@@ -15,7 +15,7 @@ module.exports = class portfolio
         for(let i=0;i<json.length;i++)
         {
             let ajson = json[i] ;
-            let obj = new baseObject(ajson) ;
+            let obj = new asset(ajson) ;
             this.assets.push(obj) ;
 
         }
@@ -29,14 +29,7 @@ module.exports = class portfolio
 
     convertToJSonString()
     {
-        let tempArray = [];
-
-        for (let i=0;i<this.assets.length;i++)
-        {
-            let anObj = this.assets[i] ;
-            tempArray.push(anObj.convertToObject()) ;
-        }
-        return JSON.stringify(tempArray) ;
+        return JSON.stringify(this.assets) ;
     }
 
     length()

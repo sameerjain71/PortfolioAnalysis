@@ -18,7 +18,15 @@ module.exports = class valuationServer
         for (let i=0;i<portfolio.length;i++)
         {
             let position = portfolio[i];
-            let vObj = new valuationObject(position, valuationContext) ;
+            let vObj = new valuationObject({}) ;
+            
+//            console.log(position) ;
+            position.addFieldsInto(vObj) ;
+//            console.log(vObj) ;
+         
+            valuationContext.addFieldsInto(vObj) ;
+//            console.log(vObj) ;
+
             let assettype = position.get('assettype') ;
             
             switch (assettype)

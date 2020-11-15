@@ -7,59 +7,48 @@ module.exports = class baseObject
 
     constructor(jsonObj)
     {
-        this.myMap = new Map() ;
-        for(let key in jsonObj)
-        {
-            let value = jsonObj[key] ;
-            this.myMap.set(key, value) ;
-            
-        }
+        this.myMap = jsonObj ;
     }
 
     
-    convertToObject()
-    {
-        
-    const obj = Object.fromEntries(this.myMap);
-    return obj ;
-
-    }
+//    convertToObject()
+//    {
+//        
+//    const obj = Object.fromEntries(this.myMap);
+//    return obj ;
+//
+//    }
                
     addItem(key, value)
     {
-        if (this.myMap.has(key))
+        if (this.myMap.hasOwnProperty(key))
         {
-            this.myMap.delete(key) ;
+            delete this.myMap[key] ;
 
         }
-        this.myMap.set(key, value) ;
+        this.myMap[key] = value  ;
    }
 
-     getItem(key)
-     {
-        let v ;
-        if (this.myMap.has(key))
-        {
-            v = this.myMap.get(key) ;
-        }
-        return v ;
-     }
-     get(key)
+    get(key)
      {
         let v  ;
-        if (this.myMap.has(key))
+        if (this.myMap.hasOwnProperty(key))
         {
-            v = this.myMap.get(key) ;
+            v = this.myMap[key] ;
         }
         return v ;
      }
     
-    populateFieldsIntoMap(map)
+    addFieldsInto(target)
     {
-    for (let key of this.myMap.keys())
+        // iterate over fields and add to target
+//    console.log(this.myMap) ;
+
+    for (let key in this.myMap)
         {
-            let value = this.myMap.get(key) ;
-            map.set(key, value) ;
+//            console.log(key) ;
+            let value = this.myMap[key] ;
+            target.addItem(key, value);
         
         }
     }

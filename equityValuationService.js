@@ -10,7 +10,7 @@ module.exports = class equityValuationService
         
         vObj.addItem("price", price) ;
         
-        let position = vObj.getItem('size')  ;
+        let position = vObj.get('size')  ;
         
         if (price >0)
             tv = position * price ;

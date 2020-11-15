@@ -10,7 +10,7 @@ module.exports = class marketDataServer
 
     constructor(file)
     {
-        this.prices = new Map() ;
+        this.prices = {} ;
         
         let json = lib.readJsonFromFile(file) ;
 
@@ -29,15 +29,15 @@ module.exports = class marketDataServer
 
     addItem(key, priceObj)
     {
-        if (this.prices.has(key))
+        if (this.prices.hasOwnProperty(key))
         {
-            let arr = this.prices.get(key) ;
+            let arr = this.prices[key] ;
             this.insertPriceObj(arr, priceObj)
         }
         else
         {
             let arr = [] ;
-            this.prices.set(key, arr) ;
+            this.prices[key] = arr ;
             this.insertPriceObj(arr, priceObj) ;
         }
    }
@@ -45,9 +45,9 @@ module.exports = class marketDataServer
     getPriceArray(key)
     {
         let arr = [] ;
-         if (this.prices.has(key))
+         if (this.prices.hasOwnProperty(key))
         {
-            arr = this.prices.get(key);
+            arr = this.prices[key];
         }
         return arr ;
     }
@@ -63,28 +63,16 @@ insertPriceObj(arr, priceObj)
  convertToJSonString()
     {
 
-        let tempArray = [];
-//        console.log(this.prices.size) ;
-
-        for (let key of this.prices.keys())
-        {
-            let anArray = this.prices.get(key);
-            for (let j= 0; j<anArray.length; j++)
-            {
-                let anObj = anArray[j] ;
-                tempArray.push(anObj.convertToObject()) ;
-            }
-        }
-        return JSON.stringify(tempArray) ;
+        return JSON.stringify(this.prices) ;
     }
     
 priceFor(vObj)
 {
     let price = -1;
     
-    let date = vObj.getItem("valuation_time") ;
+    let date = vObj.get("valuation_time");
     
-    let symbol = vObj.getItem("symbol") ;
+    let symbol = vObj.get("symbol") ;
        
     let priceArray = this.getPriceArray(symbol) ;
     
@@ -99,11 +87,13 @@ priceFor(vObj)
 }
 function comparePriceObjForDates(a, b) 
     {
-        let timeA = a.get("time") ;
+        let timeString = "time" ;
+        let timeA = a.get(timeString) ;
         let dateA = new Date(timeA) ;
-        let timeB = b.get("time") ;
+        let timeB =  b.get(timeString) ;
         let dateB = new Date(timeB) ;
 
+        
         let comparison = 0 ;
         if (dateA .getTime()> dateB.getTime()) {
         comparison = 1;

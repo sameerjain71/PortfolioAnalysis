@@ -2,7 +2,7 @@
 {
 "assettype": "equity",
 "symbol":"MSFT", 
-"price":207.6,
+"traded_price":207.6,
 "size":225,
 "tradedate": "9/1/2020",
 "currency": "USD"
@@ -11,7 +11,7 @@
 {
 "assettype": "equity",
 "symbol":"IBM", 
-"price":20.6,
+"traded_price":20.6,
 "size":222,
 "tradedate": "9/1/2020",
 "currency": "USD"
@@ -19,7 +19,7 @@
 {
 "assettype": "equity",
 "symbol":"PTON", 
-"price":86,
+"traded_price":86,
 "size":2220,
 "tradedate": "9/1/2020",
 "currency": "USD"

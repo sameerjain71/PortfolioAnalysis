@@ -4,12 +4,12 @@ const marketDataServer = require('./marketDataServer.js') ;
 const valuationServer = require('./valuationServer.js') ;
 const lib = require('./utilities.js') ;
 
-// create a portfolio from a file
-let p = new portfolio('./portfolio.json') ;
-//let p = new portfolio('./temp.json') ;
 
 console.log("------IMPLEMENT MARKET DATA SERVER PRICE FETCH IN EQUITY VALUATION SERVICE------") ;
 
+// create a portfolio from a file
+let p = new portfolio('./portfolio.json') ;
+//let p = new portfolio('./temp.json') ;
 
 console.log("------portfolio------") ;
 console.log(p.convertToJSonString()) ;
