@@ -3,6 +3,9 @@ const valuationContext= require('./valuationContext.js') ;
 const equityValuationService = require('./equityValuationService.js') ;
 const portfolio = require('./portfolio.js') ;
 const lib = require('./utilities.js') ;
+const { dd } = require('./data_dictionary.js') ;
+const { asset_type } = require('./asset_type.js') ;
+
 
 module.exports = class valuationServer
 {
@@ -27,12 +30,13 @@ module.exports = class valuationServer
             valuationContext.addFieldsInto(vObj) ;
 //            console.log(vObj) ;
 
-            let assettype = position.get('assettype') ;
+            let assettype = position.get(dd.ASSET_TYPE) ;
+
             
             switch (assettype)
             {
                     
-                case "equity":
+                case asset_type.EQUITY:
                 {
                     equityValuationService.value(vObj, valuationContext, marketDataServer) ;
                     break ;

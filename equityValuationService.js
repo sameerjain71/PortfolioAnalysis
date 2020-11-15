@@ -1,21 +1,37 @@
 const lib = require('./utilities.js') ;
+const { dd } = require('./data_dictionary.js') ;
 
 module.exports = class equityValuationService
 {
 
     static value(vObj, vContext, marketDataServer)
     {
-        let price = marketDataServer.priceFor(vObj) ;
+        let priceObj = marketDataServer.priceObjFor(vObj) ;
         let tv = -99999 ;
         
-        vObj.addItem("price", price) ;
         
-        let position = vObj.get('size')  ;
+        let price = -1 ;
+        let price_time = "1/1/1900";
+
+        
+        if (priceObj != undefined)
+        {
+            price_time = priceObj.get(dd.PRICE_TIME);
+            price = priceObj.get(dd.PRICE) ;
+        }
+
+        vObj.addItem(dd.PRICE, price) ;
+        vObj.addItem(dd.PRICE_TIME, price_time) ;
+
+        
+        let position = vObj.get(dd.SIZE)  ;
         
         if (price >0)
             tv = position * price ;
         
-        vObj.addItem("tv", tv) ;
+        vObj.addItem(dd.TV, tv) ;
         
+//        console.log(vObj) ;
+                
     }
 }

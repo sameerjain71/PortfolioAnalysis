@@ -1,5 +1,7 @@
 const priceObj = require('./priceObj.js') ;
 const lib = require('./utilities.js') ;
+const { dd } = require('./data_dictionary.js') ;
+
 
 module.exports = class marketDataServer
 {
@@ -21,7 +23,7 @@ module.exports = class marketDataServer
             let ajson = json[i] ;
 //            console.log(ajson) ;
             let obj = new priceObj(ajson) ;
-            this.addItem(obj.get('symbol'), obj) ;
+            this.addItem(obj.get(dd.SYMBOL), obj) ;
 
         }
     }
@@ -66,28 +68,25 @@ insertPriceObj(arr, priceObj)
         return JSON.stringify(this.prices) ;
     }
     
-priceFor(vObj)
+priceObjFor(vObj)
 {
     let price = -1;
     
-    let date = vObj.get("valuation_time");
+    let date = vObj.get(dd.VALUATION_TIME);
     
-    let symbol = vObj.get("symbol") ;
+    let symbol = vObj.get(dd.SYMBOL) ;
        
     let priceArray = this.getPriceArray(symbol) ;
     
     let priceObj = getPriceObjForDate(priceArray, date) ;
     
-    if (priceObj !== undefined)
-        price = priceObj.get("price") ;
-    
-    return price ;
+    return priceObj ;
 }
     
 }
 function comparePriceObjForDates(a, b) 
     {
-        let timeString = "time" ;
+        let timeString = dd.PRICE_TIME ;
         let timeA = a.get(timeString) ;
         let dateA = new Date(timeA) ;
         let timeB =  b.get(timeString) ;
@@ -115,7 +114,7 @@ function getPriceObjForDate(priceArray, date)
         while ((found === false) && i<length)
         {
             let anObj = priceArray[i] ;
-            let priceObjDate = new Date(anObj.get("time")) ;
+            let priceObjDate = new Date(anObj.get(dd.PRICE_TIME)) ;
             if (priceObjDate.getTime()<= theDate.getTime())
             {
                 priceObj = anObj ;
