@@ -23,12 +23,9 @@ module.exports = class valuationServer
             let position = portfolio[i];
             let vObj = new valuationObject({}) ;
             
-//            console.log(position) ;
             position.addFieldsInto(vObj) ;
-//            console.log(vObj) ;
          
             valuationContext.addFieldsInto(vObj) ;
-//            console.log(vObj) ;
 
             let assettype = position.get(dd.ASSET_TYPE) ;
 
@@ -38,7 +35,7 @@ module.exports = class valuationServer
                     
                 case asset_type.EQUITY:
                 {
-                    equityValuationService.value(vObj, valuationContext, marketDataServer) ;
+                    equityValuationService.value(vObj, marketDataServer) ;
                     break ;
                 }
                 default:

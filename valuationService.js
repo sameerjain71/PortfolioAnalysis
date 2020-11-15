@@ -4,7 +4,7 @@ const { dd } = require('./data_dictionary.js') ;
 module.exports = class valuationService
 {
 
-    static value(vObj, vContext, marketDataServer)
+    static value(vObj, marketDataServer)
     {
         let priceObj = marketDataServer.priceObjFor(vObj) ;
         let tv = -99999 ;
