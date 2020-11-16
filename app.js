@@ -42,4 +42,16 @@ console.log(`----- state ${i} ------`) ;
 
 // value the portfolio at each state
 
+console.log("------pnl------") ;
+
+let pnlSlidesArray = valuationServer.runPnlSlides(p, jsonValuationStates, m) ;
+
+for(let i=0;i<pnlSlidesArray.length;i++)
+{
+    let pnlSlide = pnlSlidesArray[i] ;
+    
+    console.log(`----- PnL ${i} ------`) ;
+    
+    console.log(pnlSlide) ;
+}
 

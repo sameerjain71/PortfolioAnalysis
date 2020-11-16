@@ -1,5 +1,5 @@
 const lib = require('./utilities.js') ;
-const { dd } = require('./data_dictionary.js') ;
+const { dd_asset, dd_price, dd_vc } = require('./data_dictionary.js') ;
 
 module.exports = class valuationService
 {
@@ -7,29 +7,29 @@ module.exports = class valuationService
     static value(vObj, marketDataServer)
     {
         let priceObj = marketDataServer.priceObjFor(vObj) ;
-        let tv = -99999 ;
+        let tv  ;
         
         
-        let price = -1 ;
-        let price_time = "1/1/1900";
+        let price = undefined ;
+        let price_time = undefined;
 
         
         if (priceObj != undefined)
         {
-            price_time = priceObj.get(dd.PRICE_TIME);
-            price = priceObj.get(dd.PRICE) ;
+            price_time = priceObj.get(dd_price.PRICE_TIME);
+            price = priceObj.get(dd_price.PRICE) ;
         }
 
-        vObj.addItem(dd.PRICE, price) ;
-        vObj.addItem(dd.PRICE_TIME, price_time) ;
+        vObj.addItem(dd_price.PRICE, price) ;
+        vObj.addItem(dd_price.PRICE_TIME, price_time) ;
 
         
-        let position = vObj.get(dd.SIZE)  ;
+        let position = vObj.get(dd_asset.SIZE)  ;
         
         if (price >0)
             tv = position * price ;
         
-        vObj.addItem(dd.TV, tv) ;
+        vObj.addItem(dd_vc.TV, tv) ;
                         
     }
 }

@@ -1,5 +1,5 @@
 
-const dd = {
+const dd_asset = {
     
     ASSET_TYPE : "asset_type",
     SYMBOL : "symbol",
@@ -8,10 +8,35 @@ const dd = {
     TRADE_DATE : "trade_date",
     TRADED_PRICE : "traded_price",
     CURRENCY : "currency",
-    VALUATION_TIME : "valuation_time",
-    PRICE : "price",
+} ;
+
+const dd_vc = {
+
     TV : "tv", 
+    VALUATION_TIME : "valuation_time"
+} ;
+
+const dd_price = {
+
+    PRICE : "price",
     PRICE_TIME : "price_time"
 } ;
 
-module.exports = { dd };
+const dd_assettype = {
+
+    EQUITY : "equity",
+    BOND : "bond",
+    CDS_INDEX : "cds_index",
+    BOND_FUTURE : "bond_future",
+    REAL_ESTATE_SECURITY : "res"
+} ;
+
+const dd_pnl = {
+
+     PREVIOUS_TV: "previous_tv",
+    CURRENT_TV : "current_tv",
+    PNL : "pnl"
+} ;
+
+
+module.exports = { dd_asset, dd_vc, dd_price, dd_assettype, dd_pnl };
