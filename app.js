@@ -55,3 +55,7 @@ for(let i=0;i<pnlSlidesArray.length;i++)
     console.log(pnlSlide) ;
 }
 
+console.log("------rebalancing------") ;
+
+let rebalancedPortfolioArray = valuationServer.runRebalancingForTimeSeries(p, "./rebalancing.json", m) ;
+

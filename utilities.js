@@ -51,4 +51,23 @@ function convertJsonToArray(json)
     
 }
 
-module.exports = {readJsonFromFile, writeJsonToFile, convertJsonToArray}
+function findObjInArrayForField(valuationArray, field, value)
+{
+    let count = valuationArray.length ;
+    let returnObj ;
+    
+    for(let i=0;i<count;i++)
+    {
+        let anObj = valuationArray[i] ;
+                
+        if (anObj.get(field) == value)
+        {
+            returnObj = anObj ;
+            break ;
+        }
+    }
+    return returnObj ;
+    
+}
+
+module.exports = {readJsonFromFile, writeJsonToFile, convertJsonToArray, findObjInArrayForField}

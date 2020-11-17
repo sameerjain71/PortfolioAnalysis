@@ -1,0 +1,49 @@
+[
+{
+    "rebalancing_date":"6/1/2017",
+    "rebalancing_axis":
+      [
+          
+            {
+                "symbol": "IBM", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".3"
+         
+            },
+            {
+                "symbol": "MSFT", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".6"
+         
+            },
+            {
+                "symbol": "PTON", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".1"
+         
+            }
+
+
+        ]
+        
+},
+    
+{
+    "rebalancing_date":"6/1/2018",
+    "rebalancing_axis":
+      [
+          
+            {
+                "symbol": "IBM", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".4"
+         
+            },
+            {
+                "symbol": "MSFT", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".4"
+         
+            },
+            {
+                "symbol": "PTON", "rebalancing_method":"total_capitalization", "rebalacing_portfolio_percentage": ".2"
+         
+            }
+
+
+        ]
+        
+}
+
+
+]

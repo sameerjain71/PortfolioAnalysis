@@ -38,5 +38,13 @@ const dd_pnl = {
     PNL : "pnl"
 } ;
 
+const dd_rebalancing = {
+    
+    REBALANCING_DATE: "rebalancing_date",
+    REBALANCING_AXIS: "rebalancing_axis",
+    REBALANCING_METHOD: "rebalancing_method",
+    REBALANCING_PORTFOLIO_PERCENTAGE: "rebalacing_portfolio_percentage"
+    
+} ;
 
-module.exports = { dd_asset, dd_vc, dd_price, dd_assettype, dd_pnl };
+module.exports = { dd_asset, dd_vc, dd_price, dd_assettype, dd_pnl, dd_rebalancing };
